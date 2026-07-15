@@ -9,7 +9,7 @@ from metrics import empowerment_with_memory, plasticity_with_memory
 from tqdm import tqdm
 
 # Configuration 
-N_TRIALS = 1
+N_TRIALS = 100
 ITERATIONS = 100
 env = ControlGatedMDP()
 
@@ -27,7 +27,6 @@ for trial in range(N_TRIALS):
     agent = Agent(
         n_states=env.n_states, 
         n_actions=env.n_actions, 
-        learning_rate=0.5, 
         gamma=0.9, 
         transition_function=env.transition_function,
         initial_state_distribution=env.init_distribution_function,

@@ -1,5 +1,4 @@
 import numpy as np
-from tqdm import tqdm
 
 def entropy(x, axis=-1):
     """Compute entropy along a specific axis safely."""
@@ -11,7 +10,7 @@ def entropy(x, axis=-1):
     ent[mask] = -x[mask] * np.log2(x[mask])
     return np.sum(ent, axis=axis)
 
-def plasticity_with_memory(policy_mem, initial_distribution, transition_dynamics, n_states, n_actions, steps=1000):
+def plasticity_with_memory(policy_mem, initial_distribution, transition_dynamics, n_states, n_actions, steps=1):
     """
     Calculate the Plasticity of an agent in an environment given the augmented policy with memory.
     
@@ -104,7 +103,7 @@ def plasticity_with_memory(policy_mem, initial_distribution, transition_dynamics
     # Return the final converged plasticity value and the complete running history
     return plasticity_history[-1], plasticity_history.tolist()
 
-def empowerment_with_memory(policy_mem, initial_distribution, transition_dynamics, n_states, n_actions, steps=1000):
+def empowerment_with_memory(policy_mem, initial_distribution, transition_dynamics, n_states, n_actions, steps=1):
     """
     Calculate the Empowerment of an agent with memory in an environment.
     

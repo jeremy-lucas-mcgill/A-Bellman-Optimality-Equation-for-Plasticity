@@ -1,12 +1,4 @@
 import numpy as np
-from metrics import softmax
-from tqdm import tqdm
-import numpy as np
-from tqdm import tqdm
-import itertools
-
-import numpy as np
-import itertools
 
 class Agent:
     def __init__(self, n_states, n_actions, gamma, transition_function, initial_state_distribution):
@@ -74,11 +66,7 @@ class Agent:
             value_matrix = self.V_table[:self.n_states, :self.n_actions]
 
             # Solve the optimization via DP
-            best_score, best_combination = self.solve_knapsack_dp(
-                transition_weights=state_probs, 
-                value_matrix=value_matrix, 
-                gamma=self.gamma
-            )
+            best_score, best_combination = self.solve_knapsack_dp(transition_weights=state_probs, value_matrix=value_matrix)
 
             # Reconstruct the one-hot deterministic policy slice from optimal choices
             best_policy_slice = np.zeros((self.n_states, self.n_actions))
